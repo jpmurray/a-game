@@ -11,10 +11,15 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Route::get('/new-faction', 'FactionController@create')->name('new-faction.create');
+Route::post('/new-faction', 'FactionController@store')->name('new-faction.save');
 
-Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => 'ingame'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});
