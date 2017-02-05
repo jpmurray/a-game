@@ -132,16 +132,16 @@
         },
         {
             "name": "atomescrochus/laravel-bulma-starter",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/atomescrochus/laravel-bulma-starter.git",
-                "reference": "970ef7a7f57c654c476759ddc9680471f8ddf95e"
+                "reference": "8af0713c48b93deeafd5983dcc4e1065d2787611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/atomescrochus/laravel-bulma-starter/zipball/970ef7a7f57c654c476759ddc9680471f8ddf95e",
-                "reference": "970ef7a7f57c654c476759ddc9680471f8ddf95e",
+                "url": "https://api.github.com/repos/atomescrochus/laravel-bulma-starter/zipball/8af0713c48b93deeafd5983dcc4e1065d2787611",
+                "reference": "8af0713c48b93deeafd5983dcc4e1065d2787611",
                 "shasum": ""
             },
             "require": {
@@ -178,7 +178,7 @@
                 "laravel",
                 "laravel-bulma-starter"
             ],
-            "time": "2017-02-03 16:11:39"
+            "time": "2017-02-05 13:56:28"
         },
         {
             "name": "barryvdh/laravel-debugbar",
