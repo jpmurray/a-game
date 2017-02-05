@@ -18,4 +18,9 @@ class Faction extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function trainingSchedule()
+    {
+        return $this->hasMany(TrainingSchedule::class);
+    }
 }
