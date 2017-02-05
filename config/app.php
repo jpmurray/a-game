@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Atomescrochus\LaravelBulmaStarter\LaravelBulmaStarterServiceProvider::class,
 
         /*
          * Application Service Providers...
