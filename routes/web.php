@@ -21,5 +21,7 @@ Route::get('/new-faction', 'FactionController@create')->name('new-faction.create
 Route::post('/new-faction', 'FactionController@store')->name('new-faction.save');
 
 Route::group(['middleware' => 'ingame'], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('overview');
+
+    Route::get('/training', 'TrainingController@index')->name('training');
 });

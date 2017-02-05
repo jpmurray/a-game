@@ -22,6 +22,4 @@ A faction of the {{ $faction->type->name }}, under the leadership of {{ $faction
 	</div>
 </div>
 @endif
-
-@include('overview.faction')
 @endsection

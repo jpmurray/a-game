@@ -31,7 +31,7 @@ class FactionController extends Controller
 
         $faction->save();
 
-        return redirect()->route('home')->with('success', 'faction.created');
+        return redirect()->route('overview')->with('success', 'faction.created');
         // return view('home')->with('success', 'faction.created');
     }
 }
