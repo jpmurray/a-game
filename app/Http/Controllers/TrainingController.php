@@ -64,6 +64,8 @@ class TrainingController extends Controller
             $item->save();
         });
 
+        $this->payTrainingCost();
+
         return redirect()->back()->with('success', 'faction.created');
     }
 
@@ -100,7 +102,23 @@ class TrainingController extends Controller
         return true;
     }
 
+    private function payTrainingCost()
+    {
+        $faction = auth()->user()->faction;
+        $faction->money = $faction->money - $this->getTotalCost();
+        $faction->save();
+    }
+
     private function checkIfEnoughMoney()
+    {
+        if ($this->getTotalCost() <= auth()->user()->faction->money) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function getTotalCost()
     {
         $faction = request()->user()->faction;
 
@@ -108,12 +126,6 @@ class TrainingController extends Controller
         $cost_def = $faction->type->units->where('type', 'def')->first()->cost * request('def');
         $cost_spec = $faction->type->units->where('type', 'spec')->first()->cost * request('spec');
 
-        $cost_total = $cost_off + $cost_def + $cost_spec;
-
-        if ($cost_total <= $faction->money) {
-            return true;
-        } else {
-            return false;
-        }
+        return $cost_off + $cost_def + $cost_spec;
     }
 }
