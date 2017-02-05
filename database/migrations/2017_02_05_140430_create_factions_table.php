@@ -22,6 +22,7 @@ class CreateFactionsTable extends Migration
             $table->integer('off')->default(10);
             $table->integer('def')->default(10);
             $table->integer('spec')->default(0);
+            $table->integer('money')->default(1000);
             $table->timestamps();
         });
     }
