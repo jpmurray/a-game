@@ -14,6 +14,7 @@ class CreateBuildingTable extends Migration
     public function up()
     {
         Schema::create('building_schedules', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('faction_id');
             $table->integer('building_id');
             for ($i=0; $i < 24; $i++) {

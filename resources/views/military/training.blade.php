@@ -9,8 +9,33 @@ Unit training
 @endsection
 
 @section('content')
+@if(count($errors) > 0)
+<div class="columns">
+	<div class="column is-10 is-offset-1">
+		<div class="notification is-danger">
+			 @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+		</div>
+	</div>
+</div>
+@endif
+
+@if(session('success'))
+<div class="columns">
+	<div class="column is-10 is-offset-1">
+		<div class="notification is-success">
+			<b>Perfect!</b>
+			<p>We've send those people to train, they'll be ready in a month or less!</p>
+		</div>
+	</div>
+</div>
+@endif
+
 <div class="columns">
 	<div class="column is-8 is-offset-2">
+		<form action="{{ route('training.train') }}" method="POST">
+		{{ csrf_field() }}		
 		<table class="table">
 			<thead>
 				<tr>
@@ -26,7 +51,11 @@ Unit training
 			<tfoot>
 				<tr>
 					<th colspan="6">&nbsp;</th>
-					<th><a class="button">Start training</a></th>
+					<th>
+						<p class="control">
+							<button class="button" type="submit">Start training</button>
+						</p>
+					</th>
 				</tr>
 			</tfoot>
 			<tbody>
@@ -37,7 +66,7 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'off')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->off }}</td>
 					<td class="has-text-centered">0</td>
-					<td><input type="text" class="input is-small"></td>
+					<td><input name="off" type="text" class="input is-small"></td>
 				</tr>
 				<tr>
 					<th>{{ $units->where('type', 'def')->first()->name }}</th>
@@ -46,7 +75,7 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'def')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->def }}</td>
 					<td class="has-text-centered">0</td>
-					<td><input type="text" class="input is-small"></td>
+					<td><input name="def" type="text" class="input is-small"></td>
 				</tr>
 				<tr>
 					<th>{{ $units->where('type', 'spec')->first()->name }}</th>
@@ -55,10 +84,11 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'spec')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->spec }}</td>
 					<td class="has-text-centered">0</td>
-					<td><input type="text" class="input is-small"></td>
+					<td><input name="spec" type="text" class="input is-small"></td>
 				</tr>
 			</tbody>
 		</table>
+		</form>
 	</div>
 </div>
 

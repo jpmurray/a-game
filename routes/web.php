@@ -24,4 +24,5 @@ Route::group(['middleware' => 'ingame'], function () {
     Route::get('/home', 'HomeController@index')->name('overview');
 
     Route::get('/training', 'TrainingController@index')->name('training');
+    Route::post('/training', 'TrainingController@train')->name('training.train');
 });

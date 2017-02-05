@@ -14,6 +14,7 @@ class CreateTrainingTable extends Migration
     public function up()
     {
         Schema::create('training_schedules', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('faction_id');
             $table->integer('unit_id');
             for ($i=0; $i < 24; $i++) {
