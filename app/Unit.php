@@ -10,4 +10,9 @@ class Unit extends Model
     {
         return $this->belongsTo(Type::class);
     }
+
+    public function training()
+    {
+        return $this->hasMany(TrainingSchedule::class);
+    }
 }

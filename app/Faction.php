@@ -23,4 +23,13 @@ class Faction extends Model
     {
         return $this->hasMany(TrainingSchedule::class);
     }
+
+    public function getUnitsInTrainingAttribute()
+    {
+        return $this->trainingSchedule->mapWithKeys(function ($item, $key) {
+            return [$item->unit->type => $item->totalTraining];
+        });
+
+        // return $this->trainingSchedule->pluck('totalTraining')->sum();
+    }
 }
