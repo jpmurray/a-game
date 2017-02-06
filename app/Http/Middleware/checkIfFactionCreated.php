@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class checkIfFactionCreated
 {
@@ -15,7 +16,7 @@ class checkIfFactionCreated
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->user()->faction) {
+        if (Auth::check() && !$request->user()->faction) {
             return redirect()->route('new-faction.create');
         }
 
