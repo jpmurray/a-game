@@ -6,8 +6,10 @@ trait Prestige
 {
     public function getPrestigeAttribute()
     {
-        return $this->calculateMilitaryPrestige() +
-                $this->calculateEconomicPrestige();
+        $prestige = $this->calculateMilitaryPrestige() +
+                    $this->calculateEconomicPrestige();
+                    
+        return round($prestige);
     }
 
     private function calculateEconomicPrestige()
@@ -27,9 +29,14 @@ trait Prestige
             'spec' => 1.5,
         ];
 
+        $valueOfUnitsInTraining = auth()->user()->faction->unitsInTraining->map(function ($item, $key) use ($multiplier) {
+            return $item * $multiplier[$key];
+        })->sum();
+
         $total = (($this->off * $this->type->units()->where('type', 'off')->first()->cost) * $multiplier['off'])
                + (($this->def * $this->type->units()->where('type', 'def')->first()->cost) * $multiplier['def'])
-               + (($this->type->units()->where('type', 'spec')->first()->cost) * $multiplier['spec']);
+               + (($this->type->units()->where('type', 'spec')->first()->cost) * $multiplier['spec'])
+               + ($valueOfUnitsInTraining / 2);
 
         return $total;
     }
