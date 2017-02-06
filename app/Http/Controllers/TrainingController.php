@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Validator;
 class TrainingController extends Controller
 {
     use SpreadOverTime;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index()
     {
