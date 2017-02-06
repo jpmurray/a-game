@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Traits\TempusFugitHelper;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Artisan;
 
 class TempusFugit extends Command
 {
@@ -40,6 +41,10 @@ class TempusFugit extends Command
      */
     public function handle()
     {
+        Artisan::call('down');
+
         $this->trainUnits();
+
+        Artisan::call('up');
     }
 }
