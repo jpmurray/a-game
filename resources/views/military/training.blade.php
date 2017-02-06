@@ -65,7 +65,7 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'off')->first()->def }}</td>
 					<td class="has-text-centered">{{ $units->where('type', 'off')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->off }}</td>
-					<td class="has-text-centered">0</td>
+					<td class="has-text-centered">{{ $faction->unitsInTraining['off'] }}</td>
 					<td><input name="off" type="text" class="input is-small"></td>
 				</tr>
 				<tr>
@@ -74,7 +74,7 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'def')->first()->def }}</td>
 					<td class="has-text-centered">{{ $units->where('type', 'def')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->def }}</td>
-					<td class="has-text-centered">0</td>
+					<td class="has-text-centered">{{ $faction->unitsInTraining['def'] }}</td>
 					<td><input name="def" type="text" class="input is-small"></td>
 				</tr>
 				<tr>
@@ -83,7 +83,7 @@ Unit training
 					<td class="has-text-centered">{{ $units->where('type', 'spec')->first()->def }}</td>
 					<td class="has-text-centered">{{ $units->where('type', 'spec')->first()->cost }}</td>
 					<td class="has-text-centered">{{ $faction->spec }}</td>
-					<td class="has-text-centered">0</td>
+					<td class="has-text-centered">{{ $faction->unitsInTraining['spec'] }}</td>
 					<td><input name="spec" type="text" class="input is-small"></td>
 				</tr>
 			</tbody>
